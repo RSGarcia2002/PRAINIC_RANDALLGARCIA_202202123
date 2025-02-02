@@ -2,6 +2,8 @@
 
 Este manual detalla los procedimientos para realizar un mantenimiento preventivo y básico de la laptop HP 650-B6N63EA. Está pensado para usuarios sin experiencia técnica avanzada, con instrucciones claras y fáciles de seguir.
 
+[Video tutorial](https://www.youtube.com/watch?v=u1T7BZgnuE4)
+
 ## **Herramientas Necesarias**
 - Paño de microfibra suave
 - Alcohol isopropílico (70% o superior)
