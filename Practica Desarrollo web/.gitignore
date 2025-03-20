@@ -1,0 +1,34 @@
+# Ignorar node_modules
+node_modules/
+node_modules/*
+
+# Ignorar dependencias instaladas por npm o yarn
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignorar directorios de compilación y caché
+dist/
+build/
+.cache/
+
+# Ignorar archivos de entorno
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignorar logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ignorar archivos del editor
+.vscode/
+.idea/
+.DS_Store
+
+# Ignorar cobertura de pruebas
+coverage/

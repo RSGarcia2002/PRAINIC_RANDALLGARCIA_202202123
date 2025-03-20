@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h2>Crear Publicación</h2>
+
+  <form (ngSubmit)="crearPublicacion()" #postForm="ngForm">
+    <!-- Campo para el mensaje -->
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea 
+        id="mensaje" 
+        class="form-control" 
+        [(ngModel)]="publicacion.mensaje" 
+        name="mensaje" 
+        required>
+      </textarea>
+    </div>
+
+    <!-- Seleccionar Curso (Opcional) -->
+    <div class="mb-3">
+      <label for="curso" class="form-label">Seleccionar Curso</label>
+      <select 
+        id="curso" 
+        class="form-select" 
+        [(ngModel)]="publicacion.curso" 
+        name="curso">
+        <option *ngFor="let curso of cursos" [value]="curso._id">
+          {{ curso.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Seleccionar Catedrático (Opcional) -->
+    <div class="mb-3">
+      <label for="catedratico" class="form-label">Seleccionar Catedrático</label>
+      <select 
+        id="catedratico" 
+        class="form-select" 
+        [(ngModel)]="publicacion.catedratico" 
+        name="catedratico">
+        <option *ngFor="let catedratico of catedraticos" [value]="catedratico._id">
+          {{ catedratico.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Botón de enviar -->
+    <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">Publicar</button>
+  </form>
+</div>

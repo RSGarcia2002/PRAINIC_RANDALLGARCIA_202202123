@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <div class="row">
+    <div *ngFor="let publicacion of publicaciones" class="col-md-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <!-- Nombre del Catedrático -->
+          <h5 class="card-title text-center text-primary">
+            📚 {{ publicacion.catedratico?.nombre || 'Catedrático no especificado' }}
+          </h5>
+
+          <!-- Información de la Publicación -->
+          <p class="card-text">
+            <strong>📅 Fecha:</strong> {{ publicacion.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}<br>
+            <strong>👤 Publicado por:</strong> {{ publicacion.usuario?.nombres }} {{ publicacion.usuario?.apellidos }}<br>
+            <strong>📖 Curso:</strong> {{ publicacion.curso?.nombre || 'No especificado' }}
+          </p>
+
+          <!-- Contenido de la Publicación -->
+          <p class="text-muted">📝 {{ publicacion.mensaje }}</p>
+
+          <!-- Sección de Comentarios -->
+          <h6 class="text-secondary">💬 Comentarios ({{ publicacion.comentarios?.length || 0 }})</h6>
+          <ul class="list-group">
+            <li *ngFor="let comentario of publicacion.comentarios" class="list-group-item">
+              <strong>
+                <a [routerLink]="['/profile', comentario.usuario._id]" class="text-primary">
+                  {{ comentario.usuario.nombres }}
+                </a>:
+              </strong> 
+              {{ comentario.texto }}
+            </li>
+          </ul>
+          
+
+          <!-- Agregar Comentario -->
+          <div class="mt-2">
+            <input [(ngModel)]="nuevoComentario[publicacion._id]" placeholder="✍️ Escribe un comentario..." class="form-control">
+            <button class="btn btn-sm btn-primary mt-2 w-100" (click)="agregarComentario(publicacion)">Comentar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botón para Crear Nueva Publicación -->
+<div class="d-flex justify-content-center mt-4">
+  <button (click)="redirigirCrearPublicacion()" class="btn btn-success btn-lg">
+    ✨ Nueva Publicación
+  </button>
+</div>

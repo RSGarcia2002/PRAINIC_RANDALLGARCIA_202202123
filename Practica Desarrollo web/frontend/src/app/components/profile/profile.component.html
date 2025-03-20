@@ -1,0 +1,39 @@
+<div class="container mt-4">
+    <!-- Tarjeta de perfil -->
+    <div class="card shadow">
+      <div class="card-body">
+        <h3 class="card-title text-center">{{ usuario.nombres }} {{ usuario.apellidos }}</h3>
+        <p class="text-center text-muted">{{ usuario.email }}</p>
+        <p class="text-center"><strong>Registro Académico:</strong> {{ usuario.registroAcademico }}</p>
+        <p class="text-center"><strong>Créditos Aprobados:</strong> {{ totalCreditos }}</p>
+      </div>
+    </div>
+  
+    <!-- Lista de cursos aprobados -->
+    <div class="card mt-4 shadow">
+      <div class="card-body">
+        <h4 class="card-title">📚 Cursos Aprobados</h4>
+        <ul class="list-group">
+          <li *ngFor="let curso of cursosAprobados" class="list-group-item d-flex justify-content-between align-items-center">
+            {{ curso.curso.nombre }} - <strong>{{ curso.curso.creditos }} créditos</strong>
+            <button *ngIf="esMiPerfil" class="btn btn-danger btn-sm" (click)="eliminarCursoAprobado(curso.curso._id)">❌</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Agregar cursos aprobados (Solo si es su perfil) -->
+    <div *ngIf="esMiPerfil" class="card mt-4 shadow">
+      <div class="card-body">
+        <h4 class="card-title">➕ Agregar Curso Aprobado</h4>
+        <div class="d-flex">
+          <select class="form-select me-2" [(ngModel)]="nuevoCursoId">
+            <option value="" disabled selected>Selecciona un curso</option>
+            <option *ngFor="let curso of cursosDisponibles" [value]="curso._id">{{ curso.nombre }} - {{ curso.creditos }} créditos</option>
+          </select>
+          <button class="btn btn-primary" (click)="agregarCursoAprobado()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
